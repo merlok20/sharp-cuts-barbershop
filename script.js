@@ -111,27 +111,121 @@ window.addEventListener('scroll', () => {
 // ===== Set Current Year in Footer =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ===== Scroll Progress Bar (Barber Pole) =====
+// ===== Scroll Progress Bar (Barber Pole) - Draggable =====
 const progressPole = document.getElementById('scrollProgressPole');
 const progressTrack = document.getElementById('scrollProgressTrack');
 
-function updateProgressBar() {
+let isDragging = false;
+let dragStartY = 0;
+let dragStartPoleTop = 0;
+
+function getPoleTop() {
+  return parseFloat(progressPole.style.top) || 0;
+}
+
+function getScrollFromPole(poleTop) {
+  const trackHeight = progressTrack.offsetHeight;
+  const poleHeight = 70;
+  const availableTrack = trackHeight - poleHeight;
+  const clampedTop = Math.max(0, Math.min(poleTop, availableTrack));
+  const progress = availableTrack > 0 ? clampedTop / availableTrack : 0;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  return progress * docHeight;
+}
+
+function updatePoleFromScroll() {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-
-  // Move the pole along the track (track height 500px, pole height 60px, 2px padding each side)
-  const trackHeight = 500;
-  const poleHeight = 60;
-  const availableTrack = trackHeight - poleHeight - 4; // 4 for 2px top + 2px bottom padding
-  const poleTop = 2 + (progress / 100) * availableTrack;
-
+  const progress = docHeight > 0 ? (scrollTop / docHeight) : 0;
+  const trackHeight = progressTrack.offsetHeight;
+  const poleHeight = 70;
+  const availableTrack = trackHeight - poleHeight;
+  const poleTop = progress * availableTrack;
   progressPole.style.top = poleTop + 'px';
 }
 
-window.addEventListener('scroll', updateProgressBar);
-window.addEventListener('resize', updateProgressBar);
-updateProgressBar();
+window.addEventListener('scroll', () => {
+  if (!isDragging) {
+    updatePoleFromScroll();
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (!isDragging) {
+    updatePoleFromScroll();
+  }
+});
+
+function onDragStart(clientY) {
+  isDragging = true;
+  dragStartY = clientY;
+  dragStartPoleTop = getPoleTop();
+  progressPole.classList.add('dragging');
+  document.body.style.cursor = 'grabbing';
+  document.body.style.userSelect = 'none';
+}
+
+function onDragMove(clientY) {
+  if (!isDragging) return;
+
+  const deltaY = clientY - dragStartY;
+  const newPoleTop = dragStartPoleTop + deltaY;
+
+  const trackHeight = progressTrack.offsetHeight;
+  const poleHeight = 70;
+  const availableTrack = trackHeight - poleHeight;
+  const clampedTop = Math.max(0, Math.min(newPoleTop, availableTrack));
+
+  progressPole.style.top = clampedTop + 'px';
+
+  // Scroll page proportionally
+  const targetScroll = getScrollFromPole(clampedTop);
+  window.scrollTo(0, targetScroll);
+}
+
+function onDragEnd() {
+  isDragging = false;
+  progressPole.classList.remove('dragging');
+  document.body.style.cursor = '';
+  document.body.style.userSelect = '';
+}
+
+// Mouse events
+progressPole.addEventListener('mousedown', (e) => {
+  e.preventDefault();
+  onDragStart(e.clientY);
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+});
+
+function onMouseMove(e) { onDragMove(e.clientY); }
+function onMouseUp() {
+  onDragEnd();
+  document.removeEventListener('mousemove', onMouseMove);
+  document.removeEventListener('mouseup', onMouseUp);
+}
+
+// Touch events
+progressPole.addEventListener('touchstart', (e) => {
+  const touch = e.touches[0];
+  onDragStart(touch.clientY);
+  document.addEventListener('touchmove', onTouchMove, { passive: false });
+  document.addEventListener('touchend', onTouchEnd);
+});
+
+function onTouchMove(e) {
+  e.preventDefault();
+  const touch = e.touches[0];
+  onDragMove(touch.clientY);
+}
+function onTouchEnd() {
+  onDragEnd();
+  document.removeEventListener('touchmove', onTouchMove);
+  document.removeEventListener('touchend', onTouchEnd);
+}
+
+// Initialize
+updatePoleFromScroll();
 
 // ===== Back to Top Button =====
 const backToTopBtn = document.getElementById('backToTop');

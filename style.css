@@ -465,7 +465,6 @@ ul {
   background: rgba(0, 0, 0, 0.0);
   border-radius: 4px;
   z-index: 999;
-  pointer-events: none;
   box-shadow:
     inset 0 0 10px rgba(201, 161, 90, 0.10),
     0 0 0 1px rgba(201, 161, 90, 0.08);
@@ -478,8 +477,16 @@ ul {
   right: 0;
   top: 0;
   height: 70px;
-  transition: top 0.05s linear;
+  transition: none;
   z-index: 1;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.scroll-progress-pole.dragging {
+  cursor: grabbing;
 }
 
 /* Chrome top cap - domed shape */
