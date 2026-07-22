@@ -85,19 +85,12 @@ window.addEventListener('resize', () => {
 // Highlight nav link + slide indicator based on scroll position
 window.addEventListener('scroll', () => {
   let current = '';
-  const isAtBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1;
-
-  if (isAtBottom) {
-    // If at the very bottom, activate the last section (contact)
-    current = sections[sections.length - 1].getAttribute('id');
-  } else {
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (window.scrollY >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
-  }
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
 
   if (current) {
     const matchingLink = document.querySelector(`.nav-links a[href="#${current}"]`);
@@ -110,58 +103,6 @@ window.addEventListener('scroll', () => {
 
 // ===== Set Current Year in Footer =====
 document.getElementById('year').textContent = new Date().getFullYear();
-
-// ===== Scroll Progress Bar (Barber Pole) =====
-const progressPole = document.getElementById('scrollProgressPole');
-const progressTrack = document.getElementById('scrollProgressTrack');
-
-function updateProgressBar() {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-
-  // Move the pole along the track (track height 500px, pole height 60px, 2px padding each side)
-  const trackHeight = 500;
-  const poleHeight = 60;
-  const availableTrack = trackHeight - poleHeight - 4; // 4 for 2px top + 2px bottom padding
-  const poleTop = 2 + (progress / 100) * availableTrack;
-
-  progressPole.style.top = poleTop + 'px';
-}
-
-window.addEventListener('scroll', updateProgressBar);
-window.addEventListener('resize', updateProgressBar);
-updateProgressBar();
-
-// ===== Back to Top Button =====
-const backToTopBtn = document.getElementById('backToTop');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 400) {
-    backToTopBtn.classList.add('visible');
-  } else {
-    backToTopBtn.classList.remove('visible');
-  }
-});
-
-backToTopBtn.addEventListener('click', () => {
-  smoothScrollTo(0, 500);
-});
-
-// ===== Floating Chat Toggle =====
-const chatTrigger = document.getElementById('chatTrigger');
-const floatingChat = document.getElementById('floatingChat');
-
-chatTrigger.addEventListener('click', () => {
-  floatingChat.classList.toggle('active');
-});
-
-// Close chat popup when clicking outside
-document.addEventListener('click', (e) => {
-  if (!floatingChat.contains(e.target)) {
-    floatingChat.classList.remove('active');
-  }
-});
 
 // ===== Booking Form Handling =====
 const bookingForm = document.getElementById('bookingForm');
@@ -181,23 +122,10 @@ bookingForm.addEventListener('submit', (e) => {
     return;
   }
 
-  // Show success message
+  // Simulate booking success
   formMessage.style.color = '#e2c58f';
   formMessage.textContent = `Дякуємо, ${name}! Ваш запис на "${service}" ${date} прийнято. Підтвердження надішлемо на ${email}.`;
 
-  // Open email client with booking details
-  const subject = encodeURIComponent(`Новий запис — Sharp Cuts: ${name}`);
-  const body = encodeURIComponent(
-`Новий запис на стрижку
-
-Ім'я: ${name}
-Email: ${email}
-Дата: ${date}
-Послуга: ${service}
-
-— Sharp Cuts Барбершоп`
-  );
-  window.location.href = `mailto:bunvmerlok@gmail.com?subject=${subject}&body=${body}`;
 
   bookingForm.reset();
 });
