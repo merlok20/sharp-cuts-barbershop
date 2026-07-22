@@ -149,5 +149,44 @@ revealElements.forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
+observer.observe(el);
 });
+
+// ===== Premium Barber Pole Scroll =====
+
+const pole = document.querySelector(".barber-pole");
+const track = document.querySelector(".scroll-track");
+
+let current = 0;
+let target = 0;
+
+function animatePole() {
+
+    current += (target - current) * 0.08;
+
+    pole.style.transform = `translateY(${current}px)`;
+
+    requestAnimationFrame(animatePole);
+
+}
+
+function updateTarget() {
+
+    const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+    const percent =
+        maxScroll <= 0 ? 0 : window.scrollY / maxScroll;
+
+    const travel =
+        track.clientHeight - pole.clientHeight - 6;
+
+    target = percent * travel;
+
+}
+
+animatePole();
+updateTarget();
+
+window.addEventListener("scroll", updateTarget);
+window.addEventListener("resize", updateTarget);

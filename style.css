@@ -378,3 +378,148 @@ ul {
     font-size: 2.6rem;
   }
 }
+
+/* ===== Premium Barber Pole Scroll Indicator ===== */
+.scroll-pole {
+  position: fixed;
+  left: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  pointer-events: none;
+}
+
+.scroll-track {
+  position: relative;
+  width: 40px;
+  height: 480px;
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: visible;
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.03),
+    0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.barber-pole {
+  position: absolute;
+  left: 3px;
+  top: 10px;
+  width: 32px;
+  height: 110px;
+  border-radius: 999px;
+  overflow: visible;
+  background: #d4d4d4;
+  box-shadow:
+    inset 8px 0 rgba(255, 255, 255, 0.5),
+    inset -8px 0 rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+  filter:
+    drop-shadow(0 0 8px rgba(201, 161, 90, 0.2))
+    drop-shadow(0 0 16px rgba(201, 161, 90, 0.08));
+}
+
+.barber-pole::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -6px;
+  width: calc(100% + 4px);
+  height: 14px;
+  border-radius: 999px 999px 2px 2px;
+  background: linear-gradient(
+    to bottom,
+    #e8e8e8 0%,
+    #ffffff 15%,
+    #c0c0c0 40%,
+    #888888 55%,
+    #aaaaaa 70%,
+    #e0e0e0 85%,
+    #ffffff 100%
+  );
+  z-index: 50;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.barber-pole::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: -6px;
+  width: calc(100% + 4px);
+  height: 14px;
+  border-radius: 2px 2px 999px 999px;
+  background: linear-gradient(
+    to top,
+    #e8e8e8 0%,
+    #ffffff 15%,
+    #c0c0c0 40%,
+    #888888 55%,
+    #aaaaaa 70%,
+    #e0e0e0 85%,
+    #ffffff 100%
+  );
+  z-index: 50;
+  box-shadow:
+    0 -2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.pole-stripes {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffffff 0px,
+    #ffffff 14px,
+    #cc1111 14px,
+    #cc1111 30px,
+    #ffffff 30px,
+    #ffffff 44px,
+    #1a44cc 44px,
+    #1a44cc 60px
+  );
+  background-size: 85px 85px;
+  animation: stripesMove 1.2s linear infinite;
+}
+
+@keyframes stripesMove {
+  from { background-position: 0 0; }
+  to   { background-position: 85px 0; }
+}
+
+.shine {
+  position: absolute;
+  left: 4px;
+  top: -10%;
+  width: 28%;
+  height: 120%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  transform: rotate(6deg);
+  z-index: 30;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .scroll-pole {
+    left: 12px;
+  }
+  .scroll-track {
+    height: 220px;
+  }
+  .barber-pole {
+    height: 80px;
+  }
+}
