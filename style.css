@@ -422,52 +422,66 @@ ul {
     drop-shadow(0 0 16px rgba(201, 161, 90, 0.08));
 }
 
+/* ===== Top Cap — Crown/Tiered Shape ===== */
 .barber-pole::before {
   content: "";
   position: absolute;
-  left: -2px;
-  top: -6px;
-  width: calc(100% + 4px);
-  height: 14px;
-  border-radius: 999px 999px 2px 2px;
-  background: linear-gradient(
-    to bottom,
-    #e8e8e8 0%,
-    #ffffff 15%,
-    #c0c0c0 40%,
-    #888888 55%,
-    #aaaaaa 70%,
-    #e0e0e0 85%,
-    #ffffff 100%
-  );
+  left: -7px;
+  top: -12px;
+  width: calc(100% + 14px);
+  height: 24px;
+  border-radius: 999px 999px 6px 6px;
+  background:
+    linear-gradient(
+      to bottom,
+      #777 0%,
+      #999 8%,
+      #bbb 16%,
+      #ddd 24%,
+      #fff 30%,
+      #ccc 40%,
+      #888 50%,
+      #999 58%,
+      #bbb 70%,
+      #ddd 82%,
+      #eee 100%
+    );
   z-index: 50;
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+    0 4px 10px rgba(0, 0, 0, 0.5),
+    inset 0 3px 5px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== Bottom Cap — Crown/Tiered Shape ===== */
 .barber-pole::after {
   content: "";
   position: absolute;
-  left: -2px;
-  bottom: -6px;
-  width: calc(100% + 4px);
-  height: 14px;
-  border-radius: 2px 2px 999px 999px;
-  background: linear-gradient(
-    to top,
-    #e8e8e8 0%,
-    #ffffff 15%,
-    #c0c0c0 40%,
-    #888888 55%,
-    #aaaaaa 70%,
-    #e0e0e0 85%,
-    #ffffff 100%
-  );
+  left: -7px;
+  bottom: -12px;
+  width: calc(100% + 14px);
+  height: 24px;
+  border-radius: 6px 6px 999px 999px;
+  background:
+    linear-gradient(
+      to top,
+      #777 0%,
+      #999 8%,
+      #bbb 16%,
+      #ddd 24%,
+      #fff 30%,
+      #ccc 40%,
+      #888 50%,
+      #999 58%,
+      #bbb 70%,
+      #ddd 82%,
+      #eee 100%
+    );
   z-index: 50;
   box-shadow:
-    0 -2px 4px rgba(0, 0, 0, 0.3),
-    inset 0 -1px 2px rgba(255, 255, 255, 0.6);
+    0 -4px 10px rgba(0, 0, 0, 0.5),
+    inset 0 -3px 5px rgba(255, 255, 255, 0.6),
+    inset 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 
 .pole-stripes {
