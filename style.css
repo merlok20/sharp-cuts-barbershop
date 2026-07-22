@@ -66,7 +66,7 @@ ul {
 }
 
 .btn:hover {
-  background: var(--gold-light);
+  background: var(--gold-light);  
   transform: translateY(-2px);
 }
 
@@ -308,6 +308,257 @@ ul {
   min-height: 24px;
 }
 
+/* ===== Back to Top Button ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--darker);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background 0.3s ease;
+  z-index: 999;
+  box-shadow: 0 4px 14px rgba(201, 161, 90, 0.35);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--gold-light);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(201, 161, 90, 0.5);
+}
+
+/* ===== Floating Chat Button ===== */
+.floating-chat {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1001;
+}
+
+.chat-trigger {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--darker);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(201, 161, 90, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.chat-trigger:hover {
+  background: var(--gold-light);
+  transform: scale(1.08);
+}
+
+.chat-icon-default,
+.chat-icon-close {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chat-icon-close {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+.floating-chat.active .chat-icon-default {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.floating-chat.active .chat-icon-close {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.chat-popup {
+  position: absolute;
+  bottom: 68px;
+  right: 0;
+  width: 260px;
+  background: var(--dark);
+  border: 1px solid rgba(201, 161, 90, 0.3);
+  border-radius: 12px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  transform-origin: bottom right;
+}
+
+.floating-chat.active .chat-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.chat-popup-header {
+  padding: 14px 16px 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(201, 161, 90, 0.15);
+  margin-bottom: 4px;
+}
+
+.chat-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: var(--light);
+  font-size: 0.88rem;
+  transition: background 0.25s ease, color 0.25s ease;
+  text-decoration: none;
+}
+
+.chat-option:hover {
+  background: rgba(201, 161, 90, 0.12);
+  color: var(--gold);
+}
+
+.chat-option svg {
+  flex-shrink: 0;
+}
+
+.chat-option.telegram svg {
+  color: #0088cc;
+}
+
+.chat-option.whatsapp svg {
+  color: #25D366;
+}
+
+/* ===== Scroll Progress Bar (Barber Pole) ===== */
+.scroll-progress-track {
+  position: fixed;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 500px;
+  background: rgba(0, 0, 0, 0.0);
+  border-radius: 4px;
+  z-index: 999;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 10px rgba(201, 161, 90, 0.10),
+    0 0 0 1px rgba(201, 161, 90, 0.08);
+}
+
+/* Single pole unit with domed caps */
+.scroll-progress-pole {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 70px;
+  transition: top 0.05s linear;
+  z-index: 1;
+}
+
+/* Chrome top cap - domed shape */
+.scroll-progress-pole::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 16px;
+  background: linear-gradient(180deg, #eee, #ccc 30%, #aaa 60%, #999);
+  border-radius: 14px 14px 3px 3px;
+  box-shadow:
+    0 -2px 6px rgba(0,0,0,0.3),
+    inset 0 1px 3px rgba(255,255,255,0.6),
+    inset 0 -1px 2px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+/* Chrome bottom cap - domed shape */
+.scroll-progress-pole::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 16px;
+  background: linear-gradient(180deg, #999, #aaa 30%, #ccc 60%, #eee);
+  border-radius: 3px 3px 14px 14px;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.3),
+    inset 0 -1px 3px rgba(255,255,255,0.6),
+    inset 0 1px 2px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+/* Black cylinder body */
+.scroll-progress-pole .pole-body {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: #1a1a1a;
+  overflow: hidden;
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.5),
+    inset 0 1px 2px rgba(255,255,255,0.08);
+  border: 1px solid #222;
+}
+
+/* Stripes inside the pole */
+.barber-pole-inner {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #cc0000 0px,
+    #cc0000 8px,
+    #ffffff 8px,
+    #ffffff 16px,
+    #0044cc 16px,
+    #0044cc 24px,
+    #ffffff 24px,
+    #ffffff 32px
+  );
+  background-size: 100% 45px;
+  animation: barberRotate 1.5s linear infinite;
+}
+
+@keyframes barberRotate {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 45px;
+  }
+}
+
 /* ===== Footer ===== */
 .footer {
   text-align: center;
@@ -379,150 +630,3 @@ ul {
   }
 }
 
-/* ===== Premium Barber Pole Scroll Indicator ===== */
-.scroll-pole {
-  position: fixed;
-  left: 26px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 999;
-  pointer-events: none;
-}
-
-.scroll-track {
-  position: relative;
-  width: 40px;
-  height: 480px;
-  padding: 10px 0;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-  overflow: visible;
-  box-shadow:
-    inset 0 0 20px rgba(255, 255, 255, 0.03),
-    0 0 30px rgba(0, 0, 0, 0.5);
-}
-
-.barber-pole {
-  position: absolute;
-  left: 3px;
-  top: 10px;
-  width: 32px;
-  height: 110px;
-  border-radius: 999px;
-  overflow: visible;
-  background: #d4d4d4;
-  box-shadow:
-    inset 8px 0 rgba(255, 255, 255, 0.5),
-    inset -8px 0 rgba(0, 0, 0, 0.3),
-    0 8px 24px rgba(0, 0, 0, 0.5);
-  filter:
-    drop-shadow(0 0 8px rgba(201, 161, 90, 0.2))
-    drop-shadow(0 0 16px rgba(201, 161, 90, 0.08));
-}
-
-/* ===== Top Cap — Classic In-Out-In Crown Profile ===== */
-.barber-pole::before {
-  content: "";
-  position: absolute;
-  /* Flare wide at the stripe junction */
-  left: -9px;
-  top: -18px;
-  width: calc(100% + 18px);
-  height: 30px;
-  /* 
-    Crown silhouette: wide at base (out), narrows inward,
-    then a small rounded dome at top (out again)
-  */
-  border-radius: 40% 40% 30% 30% / 60% 60% 20% 20%;
-  background:
-    linear-gradient(
-      to bottom,
-      #666 0%,
-      #999 10%,
-      #ccc 18%,
-      #fff 25%,
-      #ddd 32%,
-      #888 40%,
-      #666 48%,
-      #999 58%,
-      #ddd 68%,
-      #eee 82%,
-      #f5f5f5 100%
-    );
-  z-index: 50;
-  box-shadow:
-    0 5px 12px rgba(0, 0, 0, 0.6),
-    inset 0 4px 6px rgba(255, 255, 255, 0.5),
-    inset 0 -3px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* ===== Bottom Cap — Classic In-Out-In Crown Profile ===== */
-.barber-pole::after {
-  content: "";
-  position: absolute;
-  /* Flare wide at the stripe junction */
-  left: -9px;
-  bottom: -18px;
-  width: calc(100% + 18px);
-  height: 30px;
-  border-radius: 30% 30% 40% 40% / 20% 20% 60% 60%;
-  background:
-    linear-gradient(
-      to top,
-      #666 0%,
-      #999 10%,
-      #ccc 18%,
-      #fff 25%,
-      #ddd 32%,
-      #888 40%,
-      #666 48%,
-      #999 58%,
-      #ddd 68%,
-      #eee 82%,
-      #f5f5f5 100%
-    );
-  z-index: 50;
-  box-shadow:
-    0 -5px 12px rgba(0, 0, 0, 0.6),
-    inset 0 -4px 6px rgba(255, 255, 255, 0.5),
-    inset 0 3px 4px rgba(0, 0, 0, 0.2);
-}
-
-.pole-stripes {
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  overflow: hidden;
-  background: repeating-linear-gradient(
-    45deg,
-    #ffffff 0px,
-    #ffffff 14px,
-    #cc1111 14px,
-    #cc1111 30px,
-    #ffffff 30px,
-    #ffffff 44px,
-    #1a44cc 44px,
-    #1a44cc 60px
-  );
-  background-size: 85px 85px;
-  animation: stripesMove 1.2s linear infinite;
-}
-
-@keyframes stripesMove {
-  from { background-position: 0 0; }
-  to   { background-position: 85px 0; }
-}
-
-@media (max-width: 900px) {
-  .scroll-pole {
-    left: 12px;
-  }
-  .scroll-track {
-    height: 220px;
-  }
-  .barber-pole {
-    height: 80px;
-  }
-}
