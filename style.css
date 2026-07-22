@@ -422,65 +422,71 @@ ul {
     drop-shadow(0 0 16px rgba(201, 161, 90, 0.08));
 }
 
-/* ===== Top Cap — Crown/Tiered Shape ===== */
+/* ===== Top Cap — Classic In-Out-In Crown Profile ===== */
 .barber-pole::before {
   content: "";
   position: absolute;
-  left: -7px;
-  top: -12px;
-  width: calc(100% + 14px);
-  height: 24px;
-  border-radius: 999px 999px 6px 6px;
+  /* Flare wide at the stripe junction */
+  left: -9px;
+  top: -18px;
+  width: calc(100% + 18px);
+  height: 30px;
+  /* 
+    Crown silhouette: wide at base (out), narrows inward,
+    then a small rounded dome at top (out again)
+  */
+  border-radius: 40% 40% 30% 30% / 60% 60% 20% 20%;
   background:
     linear-gradient(
       to bottom,
-      #777 0%,
-      #999 8%,
-      #bbb 16%,
-      #ddd 24%,
-      #fff 30%,
-      #ccc 40%,
-      #888 50%,
+      #666 0%,
+      #999 10%,
+      #ccc 18%,
+      #fff 25%,
+      #ddd 32%,
+      #888 40%,
+      #666 48%,
       #999 58%,
-      #bbb 70%,
-      #ddd 82%,
-      #eee 100%
+      #ddd 68%,
+      #eee 82%,
+      #f5f5f5 100%
     );
   z-index: 50;
   box-shadow:
-    0 4px 10px rgba(0, 0, 0, 0.5),
-    inset 0 3px 5px rgba(255, 255, 255, 0.6),
+    0 5px 12px rgba(0, 0, 0, 0.6),
+    inset 0 4px 6px rgba(255, 255, 255, 0.5),
     inset 0 -3px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== Bottom Cap — Crown/Tiered Shape ===== */
+/* ===== Bottom Cap — Classic In-Out-In Crown Profile ===== */
 .barber-pole::after {
   content: "";
   position: absolute;
-  left: -7px;
-  bottom: -12px;
-  width: calc(100% + 14px);
-  height: 24px;
-  border-radius: 6px 6px 999px 999px;
+  /* Flare wide at the stripe junction */
+  left: -9px;
+  bottom: -18px;
+  width: calc(100% + 18px);
+  height: 30px;
+  border-radius: 30% 30% 40% 40% / 20% 20% 60% 60%;
   background:
     linear-gradient(
       to top,
-      #777 0%,
-      #999 8%,
-      #bbb 16%,
-      #ddd 24%,
-      #fff 30%,
-      #ccc 40%,
-      #888 50%,
+      #666 0%,
+      #999 10%,
+      #ccc 18%,
+      #fff 25%,
+      #ddd 32%,
+      #888 40%,
+      #666 48%,
       #999 58%,
-      #bbb 70%,
-      #ddd 82%,
-      #eee 100%
+      #ddd 68%,
+      #eee 82%,
+      #f5f5f5 100%
     );
   z-index: 50;
   box-shadow:
-    0 -4px 10px rgba(0, 0, 0, 0.5),
-    inset 0 -3px 5px rgba(255, 255, 255, 0.6),
+    0 -5px 12px rgba(0, 0, 0, 0.6),
+    inset 0 -4px 6px rgba(255, 255, 255, 0.5),
     inset 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 
