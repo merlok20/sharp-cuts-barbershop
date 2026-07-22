@@ -151,3 +151,25 @@ revealElements.forEach(el => {
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
 });
+
+// ===== Barber Pole Scroll Indicator =====
+const barberTrack = document.getElementById('barberPoleTrack');
+const barberFrame = document.getElementById('barberPoleFrame');
+
+function updateBarberPole() {
+  if (!barberTrack || !barberFrame) return;
+
+  const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  const clamped = Math.min(Math.max(scrollPercent, 0), 1);
+
+  const trackHeight = barberTrack.offsetHeight;
+  const frameHeight = barberFrame.offsetHeight;
+  const maxTop = trackHeight - frameHeight;
+
+  const newTop = clamped * maxTop;
+  barberFrame.style.top = newTop + 'px';
+}
+
+window.addEventListener('scroll', updateBarberPole);
+window.addEventListener('resize', updateBarberPole);
+window.addEventListener('load', updateBarberPole);
