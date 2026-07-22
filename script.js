@@ -111,7 +111,7 @@ window.addEventListener('scroll', () => {
 // ===== Set Current Year in Footer =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ===== Scroll Progress Bar (Barber Pole) =====
+// ===== Scroll Progress Bar (Barber Pole) - anchored from bottom =====
 const progressPole = document.getElementById('scrollProgressPole');
 const progressTrack = document.getElementById('scrollProgressTrack');
 
@@ -120,11 +120,14 @@ function updateProgressBar() {
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
 
-  // Move the pole along the track (track height 500px, pole height 60px, 2px padding each side)
-  const trackHeight = 500;
-  const poleHeight = 60;
-  const availableTrack = trackHeight - poleHeight - 4; // 4 for 2px top + 2px bottom padding
-  const poleTop = 2 + (progress / 100) * availableTrack;
+  // Track now anchors from bottom, pole moves upward as user scrolls down
+  const trackHeight = progressTrack.offsetHeight;
+  const poleHeight = 70; // includes caps padding
+  const availableTrack = trackHeight - poleHeight;
+  
+  // At 0% scroll: pole is at bottom (close to footer)
+  // At 100% scroll: pole is at top
+  const poleTop = (100 - progress) / 100 * availableTrack;
 
   progressPole.style.top = poleTop + 'px';
 }
