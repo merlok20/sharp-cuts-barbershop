@@ -1,88 +1,177 @@
 <!DOCTYPE html>
-
-<html lang="uk">
+<html lang="uk" id="htmlTag">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sharp Cuts — Барбершоп</title>
+
+  <!-- ===== Primary Meta Tags ===== -->
+  <title>Sharp Cuts — Барбершоп у м. Мукачево</title>
+  <meta name="title" content="Sharp Cuts — Барбершоп у Мукачево" />
+  <meta name="description" content="Чоловіча стрижка, борода, гоління гарячим рушником у Мукачево. Sharp Cuts — класичний стиль, сучасна точність." />
+  <meta name="keywords" content="барбершоп, мукачево, чоловіча стрижка, стрижка бороди, гоління гарячим рушником, sharp cuts" />
+  <meta name="author" content="Sharp Cuts Barbershop" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ===== Open Graph / Social ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sharpcuts.ua" />
+  <meta property="og:title" content="Sharp Cuts — Барбершоп у Мукачево" />
+  <meta property="og:description" content="Чоловіча стрижка, борода, гоління гарячим рушником. Класичний стиль, сучасна точність." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- ===== Favicon (SVG) ===== -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23c9a15a'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='%231a1a1a'%3E%26%238280%3B%3C/text%3E%3C/svg%3E" />
+
+  <!-- ===== Styles & Fonts ===== -->
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ===== JSON-LD Structured Data (LocalBusiness) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Sharp Cuts Барбершоп",
+    "image": "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80",
+    "url": "https://sharpcuts.ua",
+    "telephone": "+380683694608",
+    "email": "bunvmerlok@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Мукачево",
+      "addressCountry": "UA"
+    },
+    "openingHours": "Mo-Sa 09:00-20:00",
+    "priceRange": "200-1000 грн",
+    "sameAs": [
+      "https://instagram.com/bunv1301",
+      "https://t.me/Bunv1301"
+    ]
+  }
+  </script>
+
+  <!-- ===== Preload Critical Assets ===== -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=80" />
+  <link rel="preload" as="style" href="style.css" />
 </head>
 <body>
 
-  <!-- Header / Navbar -->
-  <header class="navbar">
+  <!-- ===== Skip to Content (Accessibility) ===== -->
+  <a href="#mainContent" class="skip-link" id="skipLink">Перейти до вмісту</a>
+
+  <!-- ===== Language Switcher ===== -->
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn active" data-lang="uk" id="langUk" aria-label="Українська">UA</button>
+    <button class="lang-btn" data-lang="en" id="langEn" aria-label="English">EN</button>
+  </div>
+
+  <!-- ===== Header / Navbar ===== -->
+  <header class="navbar" id="navbar">
     <div class="logo">SHARP<span>CUTS</span></div>
-    <nav>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="active">Головна</a></li>
-        <li><a href="#services">Послуги</a></li>
-        <li><a href="#about">Про нас</a></li>
-        <li><a href="#gallery">Галерея</a></li>
-        <li><a href="#contact">Контакти</a></li>
+    <nav aria-label="Основна навігація">
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#home" class="active" aria-current="page" data-key="nav_home">Головна</a></li>
+        <li><a href="#services" data-key="nav_services">Послуги</a></li>
+        <li><a href="#about" data-key="nav_about">Про нас</a></li>
+        <li><a href="#gallery" data-key="nav_gallery">Галерея</a></li>
+        <li><a href="#testimonials" data-key="nav_testimonials">Відгуки</a></li>
+        <li><a href="#contact" data-key="nav_contact">Контакти</a></li>
         <span class="nav-indicator" id="navIndicator"></span>
       </ul>
     </nav>
-
-    <button class="hamburger" id="hamburgerBtn" aria-label="Перемкнути меню">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Перемкнути меню" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-content">
+  <!-- ===== Hero Section (with parallax data attribute) ===== -->
+  <section class="hero" id="home" data-parallax="true">
+    <div class="hero-overlay"></div>
+    <div class="hero-content" data-parallax-speed="0.3">
       <h1>Sharp Cuts <span>Барбершоп</span></h1>
-      <p>Класичний стиль. Сучасна точність. Кожна стрижка — це історія.</p>
-      <a href="#contact" class="btn">Записатися</a>
+      <p data-key="hero_desc">Класичний стиль. Сучасна точність. Кожна стрижка — це історія.</p>
+      <a href="#contact" class="btn" data-key="hero_btn">Записатися</a>
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- ===== Stats / Counters Section ===== -->
+  <section class="stats" id="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number" data-target="15">0</span>
+        <span class="stat-plus">+</span>
+        <p data-key="stat_years">Років досвіду</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="8500">0</span>
+        <span class="stat-plus">+</span>
+        <p data-key="stat_clients">Задоволених клієнтів</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="6">0</span>
+        <span class="stat-plus">+</span>
+        <p data-key="stat_styles">Стилів стрижок</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="4">0</span>
+        <span class="stat-plus">+</span>
+        <p data-key="stat_masters">Професійних майстрів</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Services Section ===== -->
   <section class="services" id="services">
-    <h2 class="section-title">Наші Послуги</h2>
+    <h2 class="section-title" data-key="services_title">Наші Послуги</h2>
     <div class="services-grid">
       <div class="service-card">
-        <h3>Класична стрижка</h3>
-        <p>Точна стрижка, підібрана під ваш стиль і форму обличчя.</p>
+        <div class="service-icon">✂️</div>
+        <h3 data-key="service1_title">Класична стрижка</h3>
+        <p data-key="service1_desc">Точна стрижка, підібрана під ваш стиль і форму обличчя.</p>
         <span class="price">400 грн</span>
       </div>
       <div class="service-card">
-        <h3>Стрижка бороди</h3>
-        <p>Формування та стилізація бороди з експертною точністю.</p>
+        <div class="service-icon">🧔</div>
+        <h3 data-key="service2_title">Стрижка бороди</h3>
+        <p data-key="service2_desc">Формування та стилізація бороди з експертною точністю.</p>
         <span class="price">250 грн</span>
       </div>
       <div class="service-card">
-        <h3>Гоління гарячим рушником</h3>
-        <p>Традиційне гоління небезпечною бритвою з гарячим рушником.</p>
+        <div class="service-icon">🪒</div>
+        <h3 data-key="service3_title">Гоління гарячим рушником</h3>
+        <p data-key="service3_desc">Традиційне гоління небезпечною бритвою з гарячим рушником.</p>
         <span class="price">500 грн</span>
       </div>
       <div class="service-card">
-        <h3>Фарбування волосся</h3>
-        <p>Професійне фарбування волосся для оновленого образу.</p>
+        <div class="service-icon">🎨</div>
+        <h3 data-key="service4_title">Фарбування волосся</h3>
+        <p data-key="service4_desc">Професійне фарбування волосся для оновленого образу.</p>
         <span class="price">650 грн</span>
       </div>
       <div class="service-card">
-        <h3>Дитяча стрижка</h3>
-        <p>Дбайлива та весела стрижка для наймолодших клієнтів.</p>
+        <div class="service-icon">👶</div>
+        <h3 data-key="service5_title">Дитяча стрижка</h3>
+        <p data-key="service5_desc">Дбайлива та весела стрижка для наймолодших клієнтів.</p>
         <span class="price">300 грн</span>
       </div>
       <div class="service-card">
-        <h3>Повний комплекс</h3>
-        <p>Стрижка, оформлення бороди та гоління гарячим рушником.</p>
+        <div class="service-icon">⭐</div>
+        <h3 data-key="service6_title">Повний комплекс</h3>
+        <p data-key="service6_desc">Стрижка, оформлення бороди та гоління гарячим рушником.</p>
         <span class="price">950 грн</span>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- ===== About Section ===== -->
   <section class="about" id="about">
     <div class="about-content">
-      <h2 class="section-title">Про Нас</h2>
-      <p>
+      <h2 class="section-title" data-key="about_title">Про Нас</h2>
+      <p data-key="about_desc">
         Барбершоп Sharp Cuts обслуговує громаду вже понад 15 років.
         Наші досвідчені майстри поєднують традиційні техніки з сучасними
         тенденціями, щоб створити для вас ідеальний образ. Заходьте,
@@ -91,30 +180,80 @@
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- ===== Gallery Section ===== -->
   <section class="gallery" id="gallery">
-    <h2 class="section-title">Галерея</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">Стиль 1</div>
-      <div class="gallery-item">Стиль 2</div>
-      <div class="gallery-item">Стиль 3</div>
-      <div class="gallery-item">Стиль 4</div>
-      <div class="gallery-item">Стиль 5</div>
-      <div class="gallery-item">Стиль 6</div>
+    <h2 class="section-title" data-key="gallery_title">Галерея</h2>
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Images will be populated by JS from an array -->
     </div>
   </section>
 
-  <!-- Contact / Booking Section -->
+  <!-- ===== Lightbox Modal ===== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Перегляд зображення">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Закрити">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Попереднє">&#10094;</button>
+      <img src="" alt="" id="lightboxImg" />
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Наступне">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- ===== Testimonials Section ===== -->
+  <section class="testimonials" id="testimonials">
+    <h2 class="section-title" data-key="testimonials_title">Відгуки Клієнтів</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p data-key="testimonial1_text">"Найкращий барбершоп у місті! Завжди якісна стрижка та приємна атмосфера."</p>
+        <span class="testimonial-author" data-key="testimonial1_author">— Андрій К.</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p data-key="testimonial2_text">"Дуже задоволений роботою майстрів. Рекомендую всім, хто цінує якість!"</p>
+        <span class="testimonial-author" data-key="testimonial2_author">— Михайло С.</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p data-key="testimonial3_text">"Гоління гарячим рушником — це щось неймовірне. Обов'язково прийду ще!"</p>
+        <span class="testimonial-author" data-key="testimonial3_author">— Олексій В.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact / Booking Section ===== -->
   <section class="contact" id="contact">
-    <h2 class="section-title">Записатися на Прийом</h2>
-    <form id="bookingForm" class="booking-form">
+    <h2 class="section-title" data-key="contact_title">Записатися на Прийом</h2>
+    <form id="bookingForm" class="booking-form" novalidate>
+      <input type="text" id="name" placeholder="Ваше ім'я*" required autocomplete="name" data-key="form_name" />
+      <span class="field-error" id="nameError" data-key="form_name_error">Введіть ім'я</span>
 
+      <input type="tel" id="phone" placeholder="Ваш телефон*" required autocomplete="tel" data-key="form_phone" />
+      <span class="field-error" id="phoneError" data-key="form_phone_error">Введіть номер телефону</span>
 
-      <input type="text" id="name" placeholder="Ваше ім'я" required />
-      <input type="email" id="email" placeholder="Ваш Email" required />
-      <input type="date" id="date" required />
-      <select id="service" required>
-        <option value="" disabled selected>Оберіть послугу</option>
+      <input type="email" id="email" placeholder="Ваш Email" autocomplete="email" data-key="form_email" />
+
+      <input type="date" id="date" required data-key="form_date" />
+      <span class="field-error" id="dateError" data-key="form_date_error">Виберіть дату</span>
+
+      <select id="time" required data-key="form_time">
+        <option value="" disabled selected>Оберіть час*</option>
+        <option value="09:00">09:00</option>
+        <option value="10:00">10:00</option>
+        <option value="11:00">11:00</option>
+        <option value="12:00">12:00</option>
+        <option value="13:00">13:00</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
+        <option value="18:00">18:00</option>
+        <option value="19:00">19:00</option>
+        <option value="20:00">20:00</option>
+      </select>
+      <span class="field-error" id="timeError" data-key="form_time_error">Виберіть час</span>
+
+      <select id="service" required data-key="form_service">
+        <option value="" disabled selected>Оберіть послугу*</option>
         <option value="Класична стрижка">Класична стрижка</option>
         <option value="Стрижка бороди">Стрижка бороди</option>
         <option value="Гоління гарячим рушником">Гоління гарячим рушником</option>
@@ -122,19 +261,39 @@
         <option value="Дитяча стрижка">Дитяча стрижка</option>
         <option value="Повний комплекс">Повний комплекс</option>
       </select>
-      <button type="submit" class="btn">Записатися</button>
+      <span class="field-error" id="serviceError" data-key="form_service_error">Виберіть послугу</span>
+
+      <button type="submit" class="btn btn-submit" id="submitBtn" data-key="form_submit">
+        <span class="btn-text" data-key="form_submit_text">Записатися</span>
+        <span class="btn-spinner" id="submitSpinner">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4" stroke-linecap="round" />
+          </svg>
+        </span>
+      </button>
     </form>
     <p id="formMessage" class="form-message"></p>
   </section>
 
-  <!-- Back to Top Button -->
+  <!-- ===== Booking Confirmation Modal ===== -->
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Закрити">&times;</button>
+      <div class="modal-icon">✅</div>
+      <h3 class="modal-title" data-key="modal_title">Запис підтверджено!</h3>
+      <p class="modal-text" id="modalText"></p>
+      <button class="btn" id="modalOkBtn" data-key="modal_btn">Дякую!</button>
+    </div>
+  </div>
+
+  <!-- ===== Back to Top Button ===== -->
   <button id="backToTop" class="back-to-top" aria-label="Нагору">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
 
-  <!-- Floating Social Chat -->
+  <!-- ===== Floating Social Chat ===== -->
   <div class="floating-chat" id="floatingChat">
     <button class="chat-trigger" id="chatTrigger" aria-label="Зв'язатися з нами">
       <svg class="chat-icon-default" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -145,7 +304,7 @@
       </svg>
     </button>
     <div class="chat-popup" id="chatPopup">
-      <div class="chat-popup-header">Зв'язатися з нами</div>
+      <div class="chat-popup-header" data-key="chat_header">Зв'язатися з нами</div>
       <a href="https://t.me/Bunv1301" target="_blank" rel="noopener noreferrer" class="chat-option telegram">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
         <span>Telegram: @Bunv1301</span>
@@ -157,7 +316,7 @@
     </div>
   </div>
 
-<!-- Scroll Progress Bar (Barber Pole) -->
+  <!-- ===== Scroll Progress Bar (Barber Pole) ===== -->
   <div class="scroll-progress-track" id="scrollProgressTrack">
     <div class="scroll-progress-pole" id="scrollProgressPole">
       <div class="pole-body">
@@ -166,8 +325,8 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- ===== Footer ===== -->
+  <footer class="footer" role="contentinfo">
     <div class="footer-contacts">
       <a href="tel:+380683694608" class="contact-item">
         <span class="contact-icon">📞</span>
@@ -182,10 +341,10 @@
         <span>Instagram: @bunv1301</span>
       </a>
     </div>
-    <p>&copy; <span id="year"></span> Sharp Cuts Барбершоп. Всі права захищено.</p>
+    <p>&copy; <span id="year"></span> Sharp Cuts Барбершоп. <span data-key="footer_rights">Всі права захищено.</span></p>
   </footer>
-
 
   <script src="script.js"></script>
 </body>
 </html>
+
