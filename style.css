@@ -113,8 +113,7 @@ img {
   z-index: 1001;
   display: flex;
   gap: 4px;
-  background: rgba(15, 15, 15, 0.85);
-  backdrop-filter: blur(6px);
+  background: rgba(15, 15, 15, 0.92);
   border-radius: 6px;
   padding: 3px;
   border: 1px solid rgba(201, 161, 90, 0.25);
@@ -152,8 +151,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 18px 6%;
-  background: rgba(15, 15, 15, 0.9);
-  backdrop-filter: blur(6px);
+  background: #111111;
   z-index: 1000;
 }
 
@@ -239,7 +237,6 @@ img {
   position: relative;
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.75)),
               url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-  background-attachment: fixed;
   padding: 0 20px;
   overflow: hidden;
 }
@@ -254,7 +251,6 @@ img {
 .hero-content {
   position: relative;
   z-index: 1;
-  will-change: transform;
 }
 
 .hero-content h1 {
